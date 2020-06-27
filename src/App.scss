@@ -1,0 +1,18 @@
+
+.bg-custom,
+.bg-custom .popover,
+.bg-custom .modal-content {
+  background-color: rgb(42, 60, 71) !important;
+}
+
+.bg-custom .popover .arrow:after {
+  border-right-color: rgb(42, 60, 71) !important;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+.pointer{
+  cursor: pointer;
+}
