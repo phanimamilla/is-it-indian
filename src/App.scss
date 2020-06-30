@@ -16,3 +16,11 @@
 .pointer{
   cursor: pointer;
 }
+
+.link-style{
+  cursor: pointer;
+  color: #58a6d4;
+  &:hover{
+    text-decoration: underline;
+  }
+}

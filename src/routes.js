@@ -9,6 +9,7 @@ function Routes() {
 
     const history = createBrowserHistory();
     history.listen(location => {
+        console.log(123);
         ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
 

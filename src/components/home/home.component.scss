@@ -1,67 +1,60 @@
+.main-container {
+    padding-top: 70px;
+}
+
 .search-wrapper {
-    background: #ebe7db;
-    height: 50px !important;
-    transition: all 0.2s ease;
-    flex: 0 !important;
+    background: rgb(42, 60, 71);
+    color: #ffffff;
+    max-height: 50px !important;
 
     input {
         display: inline-block;
         border: none;
+        height: 50px;
+        color: #ffffff;
         background-color: transparent;
-        margin: 0 0 0 21px !important;
+        margin: 0 0 0 5px !important;
         font-size: 16px;
+        padding: 1px 5px;
     }
     .divider {
         height: 30px;
         margin: 10px 0;
-        border-left: 1pt solid rgba(42, 60, 71, 0.4);
+        border-left: 1pt solid #ffffff;
     }
 
-    .search-icons {
-        line-height: 50px;
+    .times-icon,
+    .search-icon {
+        margin: 18px 0 5px;
         cursor: pointer;
-        margin-right: 5px;
     }
 
-    .fa-times {
+    .times-icon {
         width: 20px;
     }
-    .fa-search {
+    .search-icon {
         width: 40px;
     }
 
     .suggestion-list-wrapper {
         width: 100%;
         position: absolute;
-        top: 45px;
-        background-color: #ebe7db;
-        // display: none;
+        top: 50px;
         overflow: hidden;
-        border: 1pt solid #ebe7db;
-        box-shadow: 0 4px 6px 0 rgba(235, 231, 219, 0.29);
+        background-color: rgb(42, 60, 71);
+        color: #ffffff;
 
         .suggestion-list {
-            border-top: 1pt solid rgba(42, 60, 71, 0.4);
+            border-top: 1pt solid #ffffff;
             ul {
                 list-style: none;
                 text-align: left;
                 li {
-                    padding: 5px;
+                    padding: 5px 10px;
                     cursor: pointer;
                     &:hover {
-                        background-color: rgba(42, 60, 71, 0.2);
-                        // background-color: rgb(42, 60, 71);
-                        // color: #ebe7db;
+                        background-color: rgb(66, 93, 109) !important;
                     }
-                    // .fa-times-circle {
-                    //     color: #dc3545;
-                    // }
-                    // .fa-exclamation-circle {
-                    //     color: #fd7e14;
-                    // }
-                    // .fa-check-circle {
-                    //     color: #28a745;
-                    // }
                     .suggetion-list-element-text {
                         font-size: 16px;
                     }
@@ -69,9 +62,49 @@
             }
         }
         .suggestion-loading {
-            border-top: 1pt solid rgba(42, 60, 71, 0.4);
+            border-top: 1pt solid #ffffff;
             height: 45px;
             padding: 15px 0;
+        }
+        .suggestion-count-zero {
+            border-top: 1pt solid #ffffff;
+            height: 60px;
+            padding: 10px 0;
+            a {
+                color: #58a6d4 !important;
+            }
+        }
+    }
+}
+
+.trending-section {
+    flex: none !important;
+    margin-top: 100px !important;
+    margin-bottom: 20px;
+    .trending-head {
+        color: #6c757d;
+        font-weight: 400;
+        user-select: none;
+        margin-bottom: 0;
+    }
+
+    .trending-badges {
+        flex-wrap: wrap;
+        justify-content: center;
+        .trending-item {
+            user-select: none;
+            padding: 3px 5px;
+            color: #969696;
+            background-color: rgb(42, 60, 71);
+            border-radius: 3px;
+            margin: 10px;
+            &:hover {
+                color: #bbbbbb;
+                cursor: pointer;
+            }
+            .trending-icon {
+                margin-right: 5px;
+            }
         }
     }
 }

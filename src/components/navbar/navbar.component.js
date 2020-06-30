@@ -8,7 +8,7 @@ import {
     Container
 } from "reactstrap";
 // core components
-import logo from '../../assets/img/logo.jpg'
+import logo from '../../assets/img/logo.png'
 
 function NavbarComponent() {
     return (
