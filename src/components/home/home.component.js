@@ -10,15 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTimes, faChartLine, faInfo, faCheckCircle, faTimesCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-toastify';
 
-let trendingSearchesTemporary = [
-  { "product": "Oppo", "parent": null, "isCompany": true, "category": "Mobiles, Home Appliances, Electronic Appliances", "isIndian": false, "isIndianSubsidary": false, "isForeign": true, "isChinese": true, "alternates": "Samsung, Google, Nokia, Micromax" },
-  { "product": "TikTok", "parent": "ByteDance", "isCompany": false, "category": "Application", "isIndian": false, "isIndianSubsidary": false, "isForeign": true, "isChinese": true, "alternates": "Bolo Indya, Roposo" },
-  { "product": "Oneplus", "parent": null, "isCompany": true, "category": "Mobiles", "isIndian": false, "isIndianSubsidary": false, "isForeign": true, "isChinese": true, "alternates": "Samsung, Google, Nokia, Micromax" },
-  { "product": "Patanjali", "parent": null, "isCompany": true, "category": null, "isIndian": true, "isIndianSubsidary": false, "isForeign": false, "isChinese": false, "alternates": null },
-  { "product": "Hindustan Unilever", "parent": "Unilever PLC", "isCompany": true, "category": null, "isIndian": false, "isIndianSubsidary": true, "isForeign": false, "isChinese": false, "alternates": null },
-  { "product": "PUBG Mobile", "parent": "PUBG Corporation", "isCompany": false, "category": "Application", "isIndian": false, "isIndianSubsidary": false, "isForeign": true, "isChinese": true, "alternates": "Call of Duty, Garena Free Fire" }
-]
-
 const Home = () => {
   const searchInput = useRef(null);
   const [showSearchClear, setShowSearchClear] = useState(false);
@@ -29,12 +20,28 @@ const Home = () => {
   const [infoModalLive, setInfoModalLive] = useState(false);
   const [suggestionModalLive, setSuggestionModalLive] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState({});
-  const [trendingSearches, setTrendingSearches] = useState(trendingSearchesTemporary);
+  const [trendingSearches, setTrendingSearches] = useState([]);
+  const [showTrendingLoading, setShowTrendingLoading] = useState(true);
 
   useEffect(() => {
     searchInput.current.focus();
     ReactGA.pageview("/home");
-  }, [])
+    getTrending();
+  }, []);
+
+  function getTrending() {
+    get(`api/product/GetTrending`)
+      .then(
+        (result) => {
+          setShowTrendingLoading(false);
+          setTrendingSearches(result);
+        },
+        () => {
+          toast.error("An error occoured");
+          setShowTrendingLoading(false);
+        }
+      );
+  }
 
   function onChange(e) {
     clearTimeout(searchTimeout)
@@ -63,7 +70,7 @@ const Home = () => {
               setSuggestions(result);
             },
             () => {
-              toast.error("Ann error occoured, try again!");
+              toast.error("An error occoured, try again!");
               setSearchTerm("");
               setShowSuggestionLoading(false);
               setSuggestions([]);
@@ -126,7 +133,7 @@ const Home = () => {
                   suggestions.map((suggestion) => {
                     return <li key={suggestion.product} className="suggetion-list-element" onClick={() => suggestionSelected(suggestion)}>
                       <FontAwesomeIcon icon={(suggestion.isForeign ? faTimesCircle : suggestion.isIndianSubsidary ? faExclamationCircle : faCheckCircle)}
-                      className={"mr-1 " + (suggestion.isForeign ? "text-danger" : suggestion.isIndianSubsidary ? "text-warning" : "text-success")}/>
+                        className={"mr-1 " + (suggestion.isForeign ? "text-danger" : suggestion.isIndianSubsidary ? "text-warning" : "text-success")} />
                       <span className="suggetion-list-element-text">{suggestion.product}</span>
                     </li>
                   })
@@ -148,16 +155,19 @@ const Home = () => {
         trendingSearches &&
         <div className="trending-section text-center d-flex flex-column p-0 col-10 col-lg-6">
           <p className="w-100 text-center trending-head">Trending</p>
-          <div className="trending-badges w-100 d-flex flex-row">
-            {
-              trendingSearches.map((trendingItem) => {
-                return <div key={trendingItem.product} className="trending-item" onClick={() => trendingSelected(trendingItem)}>
-                  <FontAwesomeIcon icon={faChartLine} className="trending-icon" />
-                  {trendingItem.product}
-                </div>
-              })
-            }
-          </div>
+          {
+            showTrendingLoading ? <Loader /> :
+              <div className="trending-badges w-100 d-flex flex-row">
+                {
+                  trendingSearches.map((trendingItem) => {
+                    return <div key={trendingItem.product} className="trending-item" onClick={() => trendingSelected(trendingItem)}>
+                      <FontAwesomeIcon icon={faChartLine} className="trending-icon" />
+                      {trendingItem.product}
+                    </div>
+                  })
+                }
+              </div>
+          }
         </div>
       }
 

@@ -43,6 +43,9 @@
         overflow: hidden;
         background-color: rgb(42, 60, 71);
         color: #ffffff;
+        z-index: 2;
+        border:1pt solid #0f222d;
+        border-top: none;
 
         .suggestion-list {
             border-top: 1pt solid #ffffff;

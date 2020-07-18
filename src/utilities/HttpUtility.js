@@ -33,7 +33,7 @@ const getDuid = () => {
 const generateDuid = () => {
     let privateKey = "pkmkb";
     let date = new Date();
-    let duid = MD5(date, privateKey);
+    let duid = Base64.stringify(MD5(date.toISOString(), privateKey));
     localStorage.setItem("shk-duid", duid);
     return duid;
 }

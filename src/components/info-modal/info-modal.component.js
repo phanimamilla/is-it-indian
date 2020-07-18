@@ -22,6 +22,9 @@ const InfoModal = (props) => {
     }, [props.modalLive, props.selectedSuggestion]);
 
     function alternateSubmit() {
+        if (!alternateTerm || alternateTerm.length < 2) {
+            return;
+        }
         setAlternateSubmitting(true);
         let data = { product: selectedSuggestion.product, alternate: alternateTerm }
         post(`api/product/addAlternate`, data)
@@ -94,9 +97,12 @@ const InfoModal = (props) => {
                         id="alternate-input" value={alternateTerm} ref={alternateInput} disabled={AlternateSubmitting}
                         onChange={(e) => setAlternateTerm(e.currentTarget.value)}></Input>
                     <div className="text-center">
-                        <Button color="primary" onClick={alternateSubmit} disabled={AlternateSubmitting}>
-                            {AlternateSubmitting ? <Loader /> : "Submit"}
-                        </Button>
+                        {
+                            (alternateTerm && alternateTerm.length > 1) &&
+                            <Button color="primary" onClick={alternateSubmit} disabled={AlternateSubmitting}>
+                                {AlternateSubmitting ? <Loader /> : "Submit"}
+                            </Button>
+                        }
                     </div>
                 </div>
             }
