@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/is-it-indian/static/css/main.44c6d75b.chunk.css",
+    "main.js": "/is-it-indian/static/js/main.df0b0ef2.chunk.js",
+    "main.js.map": "/is-it-indian/static/js/main.df0b0ef2.chunk.js.map",
+    "runtime-main.js": "/is-it-indian/static/js/runtime-main.4da4a758.js",
+    "runtime-main.js.map": "/is-it-indian/static/js/runtime-main.4da4a758.js.map",
+    "static/css/2.3a221eca.chunk.css": "/is-it-indian/static/css/2.3a221eca.chunk.css",
+    "static/js/2.377562ad.chunk.js": "/is-it-indian/static/js/2.377562ad.chunk.js",
+    "static/js/2.377562ad.chunk.js.map": "/is-it-indian/static/js/2.377562ad.chunk.js.map",
+    "index.html": "/is-it-indian/index.html",
+    "precache-manifest.4da51120bfa1810a0979d97b96a43158.js": "/is-it-indian/precache-manifest.4da51120bfa1810a0979d97b96a43158.js",
+    "service-worker.js": "/is-it-indian/service-worker.js",
+    "static/css/2.3a221eca.chunk.css.map": "/is-it-indian/static/css/2.3a221eca.chunk.css.map",
+    "static/css/main.44c6d75b.chunk.css.map": "/is-it-indian/static/css/main.44c6d75b.chunk.css.map",
+    "static/js/2.377562ad.chunk.js.LICENSE.txt": "/is-it-indian/static/js/2.377562ad.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/is-it-indian/static/media/logo.32369161.png",
+    "static/media/now-ui-kit.scss": "/is-it-indian/static/media/nucleo-outline.8ebec31f.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4da4a758.js",
+    "static/css/2.3a221eca.chunk.css",
+    "static/js/2.377562ad.chunk.js",
+    "static/css/main.44c6d75b.chunk.css",
+    "static/js/main.df0b0ef2.chunk.js"
+  ]
+}
